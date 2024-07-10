@@ -19,8 +19,6 @@ using Foody.Application.Services.PromotionServices.Implements;
 using Foody.Application.Services.PromotionServices.Interfaces;
 using Foody.Application.Services.UserServices.Implements;
 using Foody.Application.Services.UserServices.Interfaces;
-using Foody.Application.Services.VnpayService.Implements;
-using Foody.Application.Services.VnpayService.Interfaces;
 using Foody.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -127,7 +125,6 @@ namespace Foody.API
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
-            builder.Services.AddScoped<IVnpayService, VnpayService>();
             builder.Services.AddScoped<IDashboardService, DashboardService>();
             builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
             var app = builder.Build();
@@ -143,7 +140,7 @@ namespace Foody.API
             app.UseCors("MyPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseStaticFiles(new StaticFileOptiDons
+            app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "ImageStorage", "images")),
                 RequestPath = "/ImageStorage/images"
