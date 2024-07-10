@@ -14,13 +14,13 @@ namespace Foody.Application.Services.CartServices.Implements
     {
         private readonly FoodyAppContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
+            
         public CartService(FoodyAppContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
-            #region quản lý đơn hàng nháp (giỏ hàng)
+            #region quản lý đơn hàng  (giỏ hàng)
 
         //Thêm sản phẩm vào giỏ hàng
         public async Task<string> AddProductToCart(int productId)
